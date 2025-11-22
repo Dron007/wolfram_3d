@@ -185,7 +185,7 @@ const Automata3DViewer: React.FC<Automata3DProps> = (props) => {
         <ambientLight intensity={0.8} />
         <pointLight position={[50, 50, 50]} intensity={2.5} castShadow />
         <pointLight position={[-50, 50, -50]} intensity={1.5} color="#ffffff" />
-        <hemisphereLight intensity={0.6} groundColor={palette.background} color="#ffffff" />
+        <hemisphereLight intensity={0.9} groundColor={palette.background} color="#ffffff" />
         
         <Suspense fallback={null}>
           <SimulationScene {...props} />

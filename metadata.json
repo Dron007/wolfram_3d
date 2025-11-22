@@ -1,0 +1,5 @@
+{
+  "name": "Wolfram 3D Automata Explorer",
+  "description": "An interactive visualization tool for Wolfram's 1-dimensional elementary cellular automata. Explore chaos, order, and complexity through simple rules.",
+  "requestFramePermissions": []
+}

@@ -172,20 +172,30 @@ const Automata3DViewer: React.FC<Automata3DProps> = (props) => {
         camera={{ position: [40, 40, 40], fov: 45 }}
       >
         <color attach="background" args={[palette.background]} />
-        <fog attach="fog" args={[palette.background, 20, 150]} />
+        {/* Increased fog distance to 400 to prevent scene getting too dark when zooming out */}
+        <fog attach="fog" args={[palette.background, 50, 400]} />
         
         <OrbitControls 
           autoRotate={props.isPlaying} 
           autoRotateSpeed={1.0}
-          maxDistance={150}
+          maxDistance={200}
           minDistance={10}
           makeDefault
         />
 
-        <ambientLight intensity={0.8} />
+        {/* Increased ambient light intensity for better overall visibility */}
+        <ambientLight intensity={1.5} />
+        
+        {/* Main Key Light */}
         <pointLight position={[50, 50, 50]} intensity={2.5} castShadow />
-        <pointLight position={[-50, 50, -50]} intensity={1.5} color="#ffffff" />
-        <hemisphereLight intensity={0.9} groundColor={palette.background} color="#ffffff" />
+        
+        {/* Fill Light (Back) - Increased intensity */}
+        <pointLight position={[-50, 50, -50]} intensity={2.0} color="#e0e7ff" />
+        
+        {/* Bottom Fill Light - Added to illuminate from below */}
+        <pointLight position={[0, -60, 0]} intensity={1.2} color="#cbd5e1" />
+        
+        <hemisphereLight intensity={1.2} groundColor={palette.background} color="#ffffff" />
         
         <Suspense fallback={null}>
           <SimulationScene {...props} />

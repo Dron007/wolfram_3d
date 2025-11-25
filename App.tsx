@@ -6,7 +6,19 @@ import { Menu, X } from 'lucide-react';
 
 const App: React.FC = () => {
   const [rule, setRule] = useState<RuleSet>({
-    name: 'Life', born: [3], survive: [2, 3] 
+    name: 'Life', 
+    type: 'totalistic',
+    // Life in 9-sum notation: 
+    // Dead (0) needs 3 neighbors -> Sum 3
+    // Alive (1) needs 2 or 3 neighbors -> Sum (2+1)=3 or (3+1)=4
+    born: [3], 
+    survive: [3, 4],
+    
+    // Wolfram defaults
+    ruleH: 30, enabledH: true,
+    ruleV: 30, enabledV: true,
+    ruleD1: 30, enabledD1: false,
+    ruleD2: 30, enabledD2: false
   });
   const [isPlaying, setIsPlaying] = useState(false);
   const [generation, setGeneration] = useState(0);

@@ -67,7 +67,8 @@ const SimulationScene: React.FC<Automata3DProps> = ({
 
       // Compute Next Layer
       const currentLayer = historyRef.current[historyRef.current.length - 1];
-      const nextLayer = computeNextGeneration2D(currentLayer, gridSize, rule.born, rule.survive);
+      // Updated: Passing the full rule object, not just born/survive arrays
+      const nextLayer = computeNextGeneration2D(currentLayer, gridSize, rule);
       
       historyRef.current.push(nextLayer);
       

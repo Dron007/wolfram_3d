@@ -7,10 +7,27 @@ export enum ThemePalette {
   Lava = 'Lava'
 }
 
+export type RuleType = 'totalistic' | 'wolfram';
+
 export interface RuleSet {
   name: string;
-  born: number[];    // Number of neighbors required to be born (0->1)
-  survive: number[]; // Number of neighbors required to survive (1->1)
+  type: RuleType;
+  // For Totalistic (0-9 neighbors now, including self)
+  born: number[];    // Sum of 9 cells required to be born
+  survive: number[]; // Sum of 9 cells required to survive
+  
+  // For Wolfram Elementary (Cross-section style)
+  ruleH: number;     // 0-255 Horizontal Rule
+  enabledH: boolean; 
+  
+  ruleV: number;     // 0-255 Vertical Rule
+  enabledV: boolean;
+  
+  ruleD1: number;    // 0-255 Diagonal \ (Main)
+  enabledD1: boolean;
+  
+  ruleD2: number;    // 0-255 Diagonal / (Anti)
+  enabledD2: boolean;
 }
 
 export interface AppState {
